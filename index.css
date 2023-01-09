@@ -1,4 +1,32 @@
-html{
-    font-size: 1 rem;
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    margin-bottom: 40px;
+
+}
+.nav-items > ul{
+    list-style-type: none;
+    display: flex;
+}
+.nav-items > ul > li{
+    padding: 10px;
+}
+.logo{
+    max-width: 60px;
+}
+.card{
+    width: 200px;
+    padding: 10px;
+    border: 2px solid #070707;
+}
+.card > img{
+    width: 100%;
     
+}
+.card_group{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }

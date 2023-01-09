@@ -1,0 +1,138 @@
+Q- Is JSX is mandatory for react?
+    A- No, It is not manadatory. we can create element using React.createElement() 
+    If you use this shorthand form for React.createElement, it can be almost as convenient to use React without JSX.
+    EXP- 
+    const e = React.createElement;
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(e('div', null, 'Hello World'));
+    
+    output- it will create div with text Hello world
+
+Q- Is ESX is Mandatory for React ?
+    A- No , without using ES6 , we can write code in react. and thar is completely fine.
+
+        1-Normally you would define a React component as a plain JavaScript class:
+
+        class Greeting extends React.Component {
+        render() {
+            return <h1>Hello, {this.props.name}</h1>;
+        }
+        }
+        If you don’t use ES6 yet, you may use the create-react-class module instead:
+
+        var createReactClass = require('create-react-class');
+        var Greeting = createReactClass({
+        render: function() {
+            return <h1>Hello, {this.props.name}</h1>;
+        }
+        });
+
+        2- Declaring Default Props
+        With functions and ES6 classes defaultProps is defined as a property on the component itself:
+        
+        class Greeting extends React.Component {
+          // ...
+        }
+        
+        Greeting.defaultProps = {
+          name: 'Mary'
+        };
+        With createReactClass(), you need to define getDefaultProps() as a function on the passed object:
+        
+        var Greeting = createReactClass({
+          getDefaultProps: function() {
+            return {
+              name: 'Mary'
+            };
+          },
+        
+          // ...
+        
+        });
+
+        3-
+        
+
+Q- {TitleComponent} vs <TitleComponent/> vs <TitleComponent></TitleComponent> In JSX?
+    A- {TitleComponent} - to add react element in JSX
+    <TitleComponent/>  - to call the function in JSX which is component 
+    <TitleComponent></TitleComponent> - it is just a another way to call the function Inside JSX which is component in React
+
+Q- How do I write comment in JSX?
+   A- If you want to comment something in JSX you need to use JavaScript comments inside of Curly braces like {/*comment here*/}. It is a regular /* Block Comments */, but need to be wrapped in curly braces.
+
+    const HeaderComponent = () =>{
+            return(
+                <>
+                    {/* A JSX comment */}
+                    {/* or it can be
+                    Multiline
+                    comment
+                */}
+                </>
+            )
+        }
+ 
+Q- What is <React.Fragment></React.Fragment> or <></>?
+    A- React.Fragment is a component which is exported by react. we use component in JSX by using tag or self closing tag
+    exp - 
+    const JSX = <React.Fragment>
+                <h1> JSX1<h1/>
+                <h2> JSX2<h2/>
+            </React.Fragment>
+
+
+    - <React.Fragment></React.Fragment>
+    is same <></> as empty tag it is also react.fragment
+    empty tag is shorthand of React.Fragment
+
+Q- What is Virtual DOM?
+A-
+    a-The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM. This process is called reconciliation.
+    b- "We keep a representation of actual  DOM with us which is virtual DOM" 
+    c- Why do we need Virtual DOM? answer is for Reconciliation.
+    d- react does something reconciliation
+    React uses  Algorithm  diff algorithm in one tree to another and get  difference then iit decide what need to change in UI , This process is called Reconciliation
+    it will not rerender everything of Dom it will only render that change in actual DOM, This makes React APP fast 
+
+Q- What is Reconciliation in react?
+    A-Reconciliation is the algorithm behind what is popularly understood as the "virtual DOM." A high-level description goes something like this: when you render a React application, a tree of nodes that describes the app is generated and saved in memory. This tree is then flushed to the rendering environment — for example, in the case of a browser application, it's translated to a set of DOM operations. When the app is updated (usually via setState), a new tree is generated. The new tree is diffed with the previous tree to compute which operations are needed to update the rendered app.
+
+    Although Fiber is a ground-up rewrite of the reconciler, the high-level algorithm described in the React docs will be largely the same. The key points are:
+    
+    Different component types are assumed to generate substantially different trees. React will not attempt to diff them, but rather replace the old tree completely.
+    Diffing of lists is performed using keys. Keys should be "stable, predictable, and unique."
+
+Q- What is React Fibre?
+    A- in react 16 diff algorithm change, and come up with React Fiber.
+    React Fiber is new Reconciliation Engine. It came in react 16. It is responsible for Diff
+    React Fiber is an ongoing reimplementation of React's core algorithm. It is the culmination of over two years of research by the React team.
+    The goal of React Fiber is to increase its suitability for areas like animation, layout, and gestures. Its headline feature is incremental rendering: the ability to split rendering work into chunks and spread it out over multiple frames.
+    Other key features include the ability to pause, abort, or reuse work as new updates come in; the ability to assign priority to different types of updates; and new concurrency primitives.
+Q- Why Do we need Keys in React? and when do we need?
+    A-Suppose there were 4 list li child  in react now 5th list added, diff algo will find 5 list then find difference that earlier 4 list and now 5 list it will get confused to get diffrence it will rerender all 5 list,React will mutate every child instead of realizing it can keep the old 4 list subtrees intact
+    If we will specify Key on each div , so diff algo will easily understand, earlier was 4 list and now 5 list added which has unique key it will easily find the difference and re render only 5th list in which changes has been made not all 5 lst that’s the advantage of key , this improved app performance as well
+
+Q- What is Props in React? Ways to 
+    A- 1-Props is a Just a parameter to access arugment which in react is attribute that we pass define inside component when it is called .
+    2-shorthand for properties
+    3-way of passing data from parent component (Body) to class component which is (<ResturantCard />)
+    4-props pass as a parameter inside the component
+    5-In Js Function you pass argument we receive parameter
+    - In react we pass attribute in component which is like argument  and get props as parameter  we can use another name instead of props like parameter
+Q- What is config Driven UI?
+    A-all the UI is driven by a config which is sent by backend oR some api.
+    B- normally all the configration is handled by using JSON data.
+    c- everything is driven by config (backend)
+
+Q- Diffrence between Map and For each?
+    A- 1- map() allocates memory and stores return values based on your calllback function. forEach() throws away return values and always returns undefined.
+    2- original array in not modified in map () and in forEach as well.
+    3- forEach() will allow a callback function to mutate the current array. map() will instead return a new array.
+    4-forEach is not chainable but map is chainable
+
+    Exp-
+    let arr = [1, 2, 3, 4, 5];
+    let arr2 = arr.map(num => num * 2).filter(num => num > 5);
+    // arr2 = [6, 8, 10]
+    this chaining is not possible with forEach.
