@@ -124,6 +124,7 @@ Q- What is config Driven UI?
     A-all the UI is driven by a config which is sent by backend oR some api.
     B- normally all the configration is handled by using JSON data.
     c- everything is driven by config (backend)
+    d- based on thsese config UI will change.
 
 Q- Diffrence between Map and For each?
     A- 1- map() allocates memory and stores return values based on your calllback function. forEach() throws away return values and always returns undefined.
@@ -136,3 +137,5 @@ Q- Diffrence between Map and For each?
     let arr2 = arr.map(num => num * 2).filter(num => num > 5);
     // arr2 = [6, 8, 10]
     this chaining is not possible with forEach.
+
+    ====================End==========================
